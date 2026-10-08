@@ -18,7 +18,7 @@ MyPawn >> diagonalSquares [
 
 { #category : 'path commands' }
 MyPawn >> forwardMoves [
-	^ self oneStepForward
+	^ self oneStepForward, self twoStepForward 
 	 
 	
 ]
@@ -45,6 +45,15 @@ MyPawn >> id [
 	^ 'P'
 ]
 
+{ #category : 'testing' }
+MyPawn >> isFirstMove [
+	^ self isWhite
+		   ifTrue: [ square file = $2 ]
+		   ifFalse: [ square file = $7 ]
+	
+	
+]
+
 { #category : 'path commands' }
 MyPawn >> oneStepForward [
 	^ { self forwardSquare } select: [ :s | s notNil and: [ s hasPiece not ] ]
@@ -60,4 +69,10 @@ MyPawn >> renderPieceOn: aSquare [
 MyPawn >> targetSquaresLegal: aBoolean [
 
 	^ self forwardMoves, self captureMoves
+]
+
+{ #category : 'path commands' }
+MyPawn >> twoStepForward [
+	^ (self oneStepForward collect: [ :oneStep | self forwardOf: oneStep ])
+	select: [ :s | self isFirstMove and: [ s notNil and: [ s hasPiece not ] ] ]
 ]

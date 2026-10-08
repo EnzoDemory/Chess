@@ -6,6 +6,17 @@ Class {
 }
 
 { #category : 'path commands' }
+MyPawn >> captureMoves [
+	^ self diagonalSquares select: [ :s | s notNil and: [ s hasPiece and: [ self isWhite ~= s contents isWhite ] ] ]
+	
+]
+
+{ #category : 'path commands' }
+MyPawn >> diagonalSquares [
+	^ { self forwardSquare ifNotNil: #left . self forwardSquare ifNotNil: #right }
+]
+
+{ #category : 'path commands' }
 MyPawn >> forwardMoves [
 	^ self oneStepForward
 	 
@@ -48,5 +59,5 @@ MyPawn >> renderPieceOn: aSquare [
 { #category : 'rendering' }
 MyPawn >> targetSquaresLegal: aBoolean [
 
-	^ self forwardMoves
+	^ self forwardMoves, self captureMoves
 ]

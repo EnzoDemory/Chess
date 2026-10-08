@@ -100,6 +100,35 @@ MyPawnTests >> testPawnCannotCapturePawnWithForwardMove [
 ]
 
 { #category : 'tests' }
+MyPawnTests >> testPawnCannotJumpOverAPieceOnInitialMove [
+
+	| board pawn |
+	board := MyChessBoard empty.
+	pawn := MyPawn white.
+	board at: 'e2' put: pawn.
+	board at: 'e3' put: MyRook black.
+	
+	self assert: pawn legalTargetSquares size equals: 0
+	
+]
+
+{ #category : 'tests' }
+MyPawnTests >> testPawnCannotMoveTwoSquareWhenItIsBlockedByAnotherPiece [
+
+	| board pawn legalMoves |
+	board := MyChessBoard empty.
+	pawn := MyPawn white.
+	board at: 'e2' put: pawn.
+	board at: 'e4' put: MyKnight black.
+	
+	legalMoves := pawn legalTargetSquares.
+	
+	self assert: legalMoves size equals: 1.
+	self assertCollection: legalMoves includesAll: { board at: 'e3' }
+	
+]
+
+{ #category : 'tests' }
 MyPawnTests >> testWhitePawnCanCaptureBlackPawnWithDiagonalMove [
 	| board pawn pawnLegalMoves|
 	board := MyChessBoard empty.

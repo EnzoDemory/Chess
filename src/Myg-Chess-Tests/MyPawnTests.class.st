@@ -35,6 +35,19 @@ MyPawnTests >> testBlackPawnCanOnlyMoveForward [
 ]
 
 { #category : 'tests' }
+MyPawnTests >> testPawnCannotCapturePawnWithForwardMove [
+	| board blackPawn whitePawn|
+	board := MyChessBoard empty.
+	blackPawn := MyPawn black.
+	board at: 'f5' put: blackPawn.
+	whitePawn := MyPawn white.
+	board at: 'f4' put: whitePawn.
+	
+	self assert: blackPawn legalTargetSquares size equals: 0.
+	self assert: whitePawn legalTargetSquares size equals: 0.
+]
+
+{ #category : 'tests' }
 MyPawnTests >> testWhitePawnCanMoveOneOrTwoSquaresForwardWhenStarting [
 	| board pawn pawnLegalMoves|
 	board := MyChessBoard empty.

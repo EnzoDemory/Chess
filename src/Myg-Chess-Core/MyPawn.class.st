@@ -17,6 +17,12 @@ MyPawn >> diagonalSquares [
 ]
 
 { #category : 'path commands' }
+MyPawn >> direction [
+	^ self isWhite ifTrue: [ #up ]
+						ifFalse: [ #down ]
+]
+
+{ #category : 'path commands' }
 MyPawn >> forwardMoves [
 	^ self oneStepForward, self twoStepForward 
 	 
@@ -25,17 +31,13 @@ MyPawn >> forwardMoves [
 
 { #category : 'path commands' }
 MyPawn >> forwardOf: aSquare [
-	^ self isWhite
-		   ifTrue: [ aSquare up ]
-		   ifFalse: [ aSquare down ]
+	^ self direction value: aSquare
 	
 ]
 
 { #category : 'path commands' }
 MyPawn >> forwardSquare [
-	^ self isWhite
-		   ifTrue: [ square up ]
-		   ifFalse: [ square down ]
+	^ self forwardOf: square
 	
 ]
 

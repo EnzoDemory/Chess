@@ -6,6 +6,11 @@ Class {
 }
 
 { #category : 'tests' }
+MyMovementTests >> testNilMovementIsNotAPawnDoubleStep [
+    self deny: MyNilMovement new isPawnDoubleStep
+]
+
+{ #category : 'tests' }
 MyMovementTests >> testPassedSquareOfBlackDoubleStepIsTheSquareInBetween [
     | board pawn movement |
     board := MyChessBoard empty.

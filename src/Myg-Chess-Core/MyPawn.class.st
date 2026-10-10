@@ -56,6 +56,11 @@ MyPawn >> isFirstMove [
 	
 ]
 
+{ #category : 'testing' }
+MyPawn >> isPawn [
+	^ true
+]
+
 { #category : 'path commands' }
 MyPawn >> oneStepForward [
 	^ { self forwardSquare } select: [ :s | s notNil and: [ s hasPiece not ] ]

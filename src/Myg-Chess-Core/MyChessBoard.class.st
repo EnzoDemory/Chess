@@ -8,7 +8,8 @@ Class {
 		'state',
 		'whiteColor',
 		'blackColor',
-		'game'
+		'game',
+		'lastMovement'
 	],
 	#category : 'Myg-Chess-Core',
 	#package : 'Myg-Chess-Core'
@@ -96,6 +97,7 @@ MyChessBoard >> initialize [
 
 	super initialize.
 
+	self lastMovement: MyNilMovement new.
 	self blackColor: Color blue.
 	self whiteColor: Color orange.
 
@@ -215,6 +217,18 @@ MyChessBoard >> initializeSquares [
 			grid at: squareNotation put: square.
 			self addChild: square ].
 		black := black not ]
+]
+
+{ #category : 'accessing' }
+MyChessBoard >> lastMovement [
+
+	^ lastMovement
+]
+
+{ #category : 'accessing' }
+MyChessBoard >> lastMovement: anObject [
+
+	lastMovement := anObject
 ]
 
 { #category : 'accessing' }

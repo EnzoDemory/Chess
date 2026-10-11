@@ -75,7 +75,7 @@ MyPawn >> renderPieceOn: aSquare [
 { #category : 'rendering' }
 MyPawn >> targetSquaresLegal: aBoolean [
 
-	^ self forwardMoves, self captureMoves
+	^ self forwardMoves, self captureMoves, self enPassantMoves 
 ]
 
 { #category : 'path commands' }

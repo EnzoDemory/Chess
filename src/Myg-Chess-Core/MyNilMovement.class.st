@@ -6,6 +6,11 @@ Class {
 }
 
 { #category : 'testing' }
+MyNilMovement >> canExecuteEnPassantBy: aPawn on: aSquare [
+	  ^ false
+]
+
+{ #category : 'testing' }
 MyNilMovement >> isPawnDoubleStep [
 	^ false
 ]

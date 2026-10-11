@@ -20,6 +20,11 @@ MyPieceMovement class >> withPiece: aPiece from: anOriginSquare to: aDestination
 	^ instance
 ]
 
+{ #category : 'testing' }
+MyPieceMovement >> canExecuteEnPassantBy: aPawn on: aSquare [
+	  ^ self isPawnDoubleStep and: [ piece color ~= aPawn color and: [ self passedSquare = aSquare ]]
+]
+
 { #category : 'accessing' }
 MyPieceMovement >> destinationSquare [
 

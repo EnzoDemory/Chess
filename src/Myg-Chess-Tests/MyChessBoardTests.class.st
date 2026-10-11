@@ -51,3 +51,19 @@ MyChessBoardTests >> testNextMoveReplaceTheLastMovement [
 
     self deny: board lastMovement isPawnDoubleStep
 ]
+
+{ #category : 'tests' }
+MyChessBoardTests >> testPiecesAreOnlyRealPieces [
+
+    | board king rook |
+
+   board := MyChessBoard empty.
+	king := MyKing white.
+	rook := MyRook black.
+	
+   board at: 'e1' put: king.
+   board at: 'a8' put: rook.
+
+   self assert: board pieces size equals: 2.
+   self assertCollection: board pieces includesAll: { king. rook }
+]

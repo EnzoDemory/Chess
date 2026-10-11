@@ -42,6 +42,12 @@ MyPiece >> board [
 	^ square board
 ]
 
+{ #category : 'testing' }
+MyPiece >> canMoveTo: aSquare [
+	
+	^ self legalTargetSquares includes: aSquare 
+]
+
 { #category : 'rendering' }
 MyPiece >> collectSquares: aBlock [
 

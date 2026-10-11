@@ -6,6 +6,18 @@ Class {
 }
 
 { #category : 'tests' }
+MyNilPieceTests >> testNilPieceCannotMove [
+
+	| board nilPiece |
+	
+	board := MyChessBoard empty.
+	nilPiece := MyNilPiece new.
+	board at: 'e3' put: nilPiece.
+	
+	self deny: (nilPiece canMoveTo: (board at: 'e4'))
+]
+
+{ #category : 'tests' }
 MyNilPieceTests >> testNilPieceHasNoTargetSquares [
     
 	 self assert: MyNilPiece new targetSquares isEmpty

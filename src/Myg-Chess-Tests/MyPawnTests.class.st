@@ -162,6 +162,18 @@ MyPawnTests >> testNoEnPassantAfterTwoSingleSteps [
 ]
 
 { #category : 'tests' }
+MyPawnTests >> testPawnCanMoveToLegalSquare [
+
+	| board pawn |
+	pawn := MyPawn white.
+	
+	board := MyChessBoard empty.
+	board at: 'e2' put: pawn.
+	
+	self assert: (pawn canMoveTo: (board at: 'e4'))
+]
+
+{ #category : 'tests' }
 MyPawnTests >> testPawnCannotCapturePawnWithForwardMove [
 	| board blackPawn whitePawn|
 	board := MyChessBoard empty.
@@ -185,6 +197,18 @@ MyPawnTests >> testPawnCannotJumpOverAPieceOnInitialMove [
 	
 	self assert: pawn legalTargetSquares size equals: 0
 	
+]
+
+{ #category : 'tests' }
+MyPawnTests >> testPawnCannotMoveToIllegalSquare [
+
+	| board pawn |
+	pawn := MyPawn white.
+	
+	board := MyChessBoard empty.
+	board at: 'e2' put: pawn.
+	
+	self deny: (pawn canMoveTo: (board at: 'e5'))
 ]
 
 { #category : 'tests' }

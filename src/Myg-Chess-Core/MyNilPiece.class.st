@@ -6,6 +6,12 @@ Class {
 }
 
 { #category : 'testing' }
+MyNilPiece >> canMoveTo: aSquare [
+	
+	^ false
+]
+
+{ #category : 'testing' }
 MyNilPiece >> isPiece [
 	
 	^ false

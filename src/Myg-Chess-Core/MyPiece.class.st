@@ -25,6 +25,11 @@ MyPiece class >> white [
 		  yourself
 ]
 
+{ #category : 'path commands' }
+MyPiece >> afterMovingTo: aSquare previousMovement: aMovement [
+	^ self
+]
+
 { #category : 'as yet unclassified' }
 MyPiece >> attackingSquares [
 
@@ -169,13 +174,15 @@ MyPiece >> legalTargetSquares [
 
 { #category : 'path commands' }
 MyPiece >> moveTo: aSquare [
-
+ 	| previousMovement|
 	(self legalTargetSquares includes: aSquare) ifFalse: [ ^ self ].
 	
+	previousMovement := self board lastMovement.
 	self board lastMovement: (MyPieceMovement withPiece: self from: square to: aSquare ).
 	square emptyContents.
 	square := aSquare.
 	aSquare contents: self.
+	self afterMovingTo: aSquare previousMovement: previousMovement 
 ]
 
 { #category : 'rendering' }

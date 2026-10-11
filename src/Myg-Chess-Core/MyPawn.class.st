@@ -6,6 +6,11 @@ Class {
 }
 
 { #category : 'path commands' }
+MyPawn >> afterMovingTo: aSquare previousMovement: aMovement [
+	  aMovement removePawnCapturedWithEnPassantBy: self on: aSquare
+]
+
+{ #category : 'path commands' }
 MyPawn >> captureMoves [
 	^ self diagonalSquares select: [ :s | s notNil and: [ s hasPiece and: [ self isWhite ~= s contents isWhite ] ] ]
 	
@@ -20,6 +25,11 @@ MyPawn >> diagonalSquares [
 MyPawn >> direction [
 	^ self isWhite ifTrue: [ #up ]
 						ifFalse: [ #down ]
+]
+
+{ #category : 'path commands' }
+MyPawn >> enPassantMoves [
+	 ^ self diagonalSquares select: [ :s | s notNil and: [ self board lastMovement canExecuteEnPassantBy: self on: s ] ]
 ]
 
 { #category : 'path commands' }

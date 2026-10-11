@@ -14,3 +14,8 @@ MyMovement >> canExecuteEnPassantBy: aPawn on: aSquare [
 MyMovement >> isPawnDoubleStep [ 
 	^ self subclassResponsibility
 ]
+
+{ #category : 'removing' }
+MyMovement >> removePawnCapturedWithEnPassantBy: aPawn on: aSquare [
+	 	^ self subclassResponsibility 
+]

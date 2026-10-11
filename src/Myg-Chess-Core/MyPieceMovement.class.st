@@ -70,3 +70,8 @@ MyPieceMovement >> piece: anObject [
 
 	piece := anObject
 ]
+
+{ #category : 'removing' }
+MyPieceMovement >> removePawnCapturedWithEnPassantBy: aPawn on: aSquare [
+	 	(self canExecuteEnPassantBy: aPawn on: aSquare) ifTrue: [ destinationSquare emptyContents ]
+]

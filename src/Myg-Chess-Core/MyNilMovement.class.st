@@ -14,3 +14,8 @@ MyNilMovement >> canExecuteEnPassantBy: aPawn on: aSquare [
 MyNilMovement >> isPawnDoubleStep [
 	^ false
 ]
+
+{ #category : 'testing' }
+MyNilMovement >> removePawnCapturedWithEnPassantBy: aPawn on: aSquare [
+	 	^self
+]

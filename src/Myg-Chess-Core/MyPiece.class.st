@@ -171,10 +171,11 @@ MyPiece >> legalTargetSquares [
 MyPiece >> moveTo: aSquare [
 
 	(self legalTargetSquares includes: aSquare) ifFalse: [ ^ self ].
-
+	
+	self board lastMovement: (MyPieceMovement withPiece: self from: square to: aSquare ).
 	square emptyContents.
 	square := aSquare.
-	aSquare contents: self
+	aSquare contents: self.
 ]
 
 { #category : 'rendering' }

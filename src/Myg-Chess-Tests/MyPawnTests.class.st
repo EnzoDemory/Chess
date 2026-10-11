@@ -6,6 +6,24 @@ Class {
 }
 
 { #category : 'tests' }
+MyPawnTests >> testBlackPawnCanCaptureEnPassantRightAfterWhiteDoubleStep [
+
+    | board whitePawn blackPawn legalMoves |
+
+    board := MyChessBoard empty.
+    whitePawn := MyPawn white.
+    blackPawn := MyPawn black.
+    board at: 'e2' put: whitePawn.
+    board at: 'd4' put: blackPawn.
+
+    whitePawn moveTo: (board at: 'e4').
+    legalMoves := blackPawn legalTargetSquares.
+
+    self assert: legalMoves size equals: 2.
+    self assertCollection: legalMoves includesAll: { board at: 'd3'. board at: 'e3' }
+]
+
+{ #category : 'tests' }
 MyPawnTests >> testBlackPawnCanCaptureWhitePawnWithDiagonalMove [
 	| board pawn pawnLegalMoves|
 	board := MyChessBoard empty.
@@ -87,6 +105,63 @@ MyPawnTests >> testDiagonalCaptureRemovesCapturedPiece [
 ]
 
 { #category : 'tests' }
+MyPawnTests >> testEnPassantCaptureRemoveTheCapturedPawn [
+
+    | board whitePawn blackPawn |
+
+    board := MyChessBoard empty.
+    whitePawn := MyPawn white.
+    blackPawn := MyPawn black.
+    board at: 'e2' put: whitePawn.
+    board at: 'd4' put: blackPawn.
+
+    whitePawn moveTo: (board at: 'e4').
+    blackPawn moveTo: (board at: 'e3').
+
+    self assert: (board at: 'e3') contents equals: blackPawn.
+    self deny: (board at: 'e4') hasPiece
+]
+
+{ #category : 'tests' }
+MyPawnTests >> testEnPassantIsLostAfterAnotherMoveIsPlayed [
+    | board whitePawn blackPawn otherPawn legalMoves |
+
+    board := MyChessBoard empty.
+    whitePawn := MyPawn white.
+    blackPawn := MyPawn black.
+    otherPawn := MyPawn black.
+    board at: 'e2' put: whitePawn.
+    board at: 'd4' put: blackPawn.
+    board at: 'a7' put: otherPawn.
+
+    whitePawn moveTo: (board at: 'e4').
+    otherPawn moveTo: (board at: 'a6').
+    legalMoves := blackPawn legalTargetSquares.
+
+    self assert: legalMoves size equals: 1.
+    self assertCollection: legalMoves includesAll: { board at: 'd3' }
+]
+
+{ #category : 'tests' }
+MyPawnTests >> testNoEnPassantAfterTwoSingleSteps [
+
+    | board whitePawn blackPawn legalMoves|
+
+    board := MyChessBoard empty.
+    whitePawn := MyPawn white.
+    blackPawn := MyPawn black.
+    board at: 'e2' put: whitePawn.
+    board at: 'd4' put: blackPawn.
+
+    whitePawn moveTo: (board at: 'e3').
+    whitePawn moveTo: (board at: 'e4').
+    legalMoves := blackPawn legalTargetSquares.
+
+    self assert: legalMoves size equals: 1.
+    self assertCollection: legalMoves includesAll: { board at: 'd3' }
+]
+
+{ #category : 'tests' }
 MyPawnTests >> testPawnCannotCapturePawnWithForwardMove [
 	| board blackPawn whitePawn|
 	board := MyChessBoard empty.
@@ -144,6 +219,22 @@ MyPawnTests >> testWhitePawnCanCaptureBlackPawnWithDiagonalMove [
 	self assertCollection: pawnLegalMoves includesAll: {	board at: 'e4'.
 																		board at: 'f4'. 
 																		board at: 'd4' }
+]
+
+{ #category : 'tests' }
+MyPawnTests >> testWhitePawnCanCaptureEnPassantAfterBlackDoubleStep [
+    | board whitePawn blackPawn legalMoves |
+    board := MyChessBoard empty.
+    whitePawn := MyPawn white.
+    blackPawn := MyPawn black.
+    board at: 'e5' put: whitePawn.
+    board at: 'd7' put: blackPawn.
+
+    blackPawn moveTo: (board at: 'd5').
+    legalMoves := whitePawn legalTargetSquares.
+
+    self assert: legalMoves size equals: 2.
+    self assertCollection: legalMoves includesAll: { board at: 'e6'. board at: 'd6' }
 ]
 
 { #category : 'tests' }

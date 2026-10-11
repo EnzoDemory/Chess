@@ -4,7 +4,6 @@ Class {
 	#instVars : [
 		'squareMatrix',
 		'grid',
-		'selected',
 		'state',
 		'whiteColor',
 		'blackColor',
@@ -234,7 +233,7 @@ MyChessBoard >> lastMovement: anObject [
 { #category : 'accessing' }
 MyChessBoard >> pieces [
 	
-	^ children collect: [ :square | square contents ]
+	^ (children collect: [ :square | square contents ]) select: [ :piece | piece isPiece ]
 ]
 
 { #category : 'accessing' }

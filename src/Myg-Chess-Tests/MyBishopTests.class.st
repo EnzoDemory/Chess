@@ -6,6 +6,18 @@ Class {
 }
 
 { #category : 'tests' }
+MyBishopTests >> testBishopInCornerHasSevenTargets [
+
+   | board bishop |
+	bishop := MyBishop white.
+	
+   board := MyChessBoard empty.
+   board at: 'a1' put: bishop.
+
+   self assert: bishop targetSquares size equals: 7
+]
+
+{ #category : 'tests' }
 MyBishopTests >> testId [
 
 	self assert: MyBishop new id equals: 'B'

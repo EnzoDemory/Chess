@@ -65,3 +65,15 @@ MyRookTests >> testMovesWithSameColorObstacle [
 			(#( e5 e6 e7 e8 d4 c4 b4 a4 f4 e3 e2 e1 ) collect: [ :name |
 				 board at: name ])
 ]
+
+{ #category : 'tests' }
+MyRookTests >> testRookInCornerHasFourteenTargets [
+
+   | board rook |
+	rook := MyRook white.
+	
+   board := MyChessBoard empty.
+   board at: 'a1' put: rook.
+
+   self assert: rook targetSquares size equals: 14
+]

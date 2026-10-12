@@ -30,3 +30,16 @@ MyKingTest >> testIsNotCheckBySameColorRook [
 
 	self deny: king isInCheck
 ]
+
+{ #category : 'tests' }
+MyKingTest >> testKingInCornerHasThreeTargets [
+
+    
+	| board king |
+	 king := MyKing white.
+	
+    board := MyChessBoard empty.
+    board at: 'a1' put: king.
+
+    self assert: king targetSquares size equals: 3
+]

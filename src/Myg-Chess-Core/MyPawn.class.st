@@ -18,7 +18,7 @@ MyPawn >> captureMoves [
 
 { #category : 'path commands' }
 MyPawn >> diagonalSquares [
-	^ { self forwardSquare ifNotNil: #left . self forwardSquare ifNotNil: #right }
+	^ { self forwardSquare left . self forwardSquare right }
 ]
 
 { #category : 'path commands' }

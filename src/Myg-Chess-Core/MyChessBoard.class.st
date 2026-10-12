@@ -88,7 +88,7 @@ MyChessBoard >> game: aGame [
 { #category : 'highlighting' }
 MyChessBoard >> highLightTargets: squares [
 
-	squares do: [ :sq | sq ifNotNil: #highlightTarget ]
+	squares do: [ :sq | sq highlightTarget ]
 ]
 
 { #category : 'initialization' }
@@ -245,7 +245,7 @@ MyChessBoard >> select: aSquare [
 { #category : 'highlighting' }
 MyChessBoard >> unhighLightTargets: squares [
 
-	squares do: [ :sq | sq ifNotNil: #unhighlightTarget ]
+	squares do: [ :sq | sq  unhighlightTarget ]
 ]
 
 { #category : 'accessing' }

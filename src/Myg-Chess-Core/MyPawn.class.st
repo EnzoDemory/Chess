@@ -12,7 +12,7 @@ MyPawn >> afterMovingTo: aSquare previousMovement: aMovement [
 
 { #category : 'path commands' }
 MyPawn >> captureMoves [
-	^ self diagonalSquares select: [ :s | s notNil and: [ s hasPiece and: [ self isWhite ~= s contents isWhite ] ] ]
+	^ self diagonalSquares select: [ :s | s isOnBoard and: [ s hasPiece and: [ self isWhite ~= s contents isWhite ] ] ]
 	
 ]
 
@@ -29,7 +29,7 @@ MyPawn >> direction [
 
 { #category : 'path commands' }
 MyPawn >> enPassantMoves [
-	 ^ self diagonalSquares select: [ :s | s notNil and: [ self board lastMovement canExecuteEnPassantBy: self on: s ] ]
+	 ^ self diagonalSquares select: [ :s | s isOnBoard and: [ self board lastMovement canExecuteEnPassantBy: self on: s ] ]
 ]
 
 { #category : 'path commands' }
@@ -73,7 +73,7 @@ MyPawn >> isPawn [
 
 { #category : 'path commands' }
 MyPawn >> oneStepForward [
-	^ { self forwardSquare } select: [ :s | s notNil and: [ s hasPiece not ] ]
+	^ { self forwardSquare } select: [ :s | s isOnBoard and: [ s hasPiece not ] ]
 ]
 
 { #category : 'rendering' }
@@ -91,5 +91,5 @@ MyPawn >> targetSquaresLegal: aBoolean [
 { #category : 'path commands' }
 MyPawn >> twoStepForward [
 	^ (self oneStepForward collect: [ :oneStep | self forwardOf: oneStep ])
-	select: [ :s | self isFirstMove and: [ s notNil and: [ s hasPiece not ] ] ]
+	select: [ :s | self isFirstMove and: [ s isOnBoard and: [ s hasPiece not ] ] ]
 ]

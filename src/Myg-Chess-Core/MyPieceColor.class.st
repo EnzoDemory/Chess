@@ -20,7 +20,7 @@ MyPieceColor >> = aPieceColor [
 	^ self class = aPieceColor class
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'path commands' }
 MyPieceColor >> direction [ 
 	 ^ self subclassResponsibility 
 ]
@@ -30,12 +30,12 @@ MyPieceColor >> isWhite [
 	 ^ self subclassResponsibility 
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 MyPieceColor >> opponentColor [ 
 	 ^ self subclassResponsibility 
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'path commands' }
 MyPieceColor >> pawnStartFile [
  
 	 ^ self subclassResponsibility 

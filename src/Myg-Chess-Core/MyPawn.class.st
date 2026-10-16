@@ -23,8 +23,7 @@ MyPawn >> diagonalSquares [
 
 { #category : 'path commands' }
 MyPawn >> direction [
-	^ self isWhite ifTrue: [ #up ]
-						ifFalse: [ #down ]
+	^ self color direction
 ]
 
 { #category : 'path commands' }
@@ -59,9 +58,7 @@ MyPawn >> id [
 
 { #category : 'testing' }
 MyPawn >> isFirstMove [
-	^ self isWhite
-		   ifTrue: [ square file = $2 ]
-		   ifFalse: [ square file = $7 ]
+	^ square file = color pawnStartFile 
 	
 	
 ]

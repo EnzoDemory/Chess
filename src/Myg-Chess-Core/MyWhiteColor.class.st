@@ -5,22 +5,22 @@ Class {
 	#package : 'Myg-Chess-Core'
 }
 
-{ #category : 'as yet unclassified' }
+{ #category : 'path commands' }
 MyWhiteColor >> direction [ 
 	 ^ #up
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'testing' }
 MyWhiteColor >> isWhite [
 	 ^ true
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'accessing' }
 MyWhiteColor >> opponentColor [ 
 	 ^ MyPieceColor black 
 ]
 
-{ #category : 'as yet unclassified' }
+{ #category : 'path commands' }
 MyWhiteColor >> pawnStartFile [
  
 	 ^ $2

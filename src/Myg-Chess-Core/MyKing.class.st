@@ -65,7 +65,7 @@ MyKing >> isKing [
 { #category : 'accessing' }
 MyKing >> opponentPieces [
 
-	^ self board pieces select: [ :e | e color = color negated ]
+	^ self board pieces select: [ :e | e color = color opponentColor ]
 ]
 
 { #category : 'rendering' }

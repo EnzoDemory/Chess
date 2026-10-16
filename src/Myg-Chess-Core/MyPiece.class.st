@@ -13,7 +13,7 @@ Class {
 MyPiece class >> black [
 
 	^ self new
-		  color: Color black;
+		  color: MyPieceColor black;
 		  yourself
 ]
 
@@ -21,7 +21,7 @@ MyPiece class >> black [
 MyPiece class >> white [
 
 	^ self new
-		  color: Color white;
+		  color: MyPieceColor white;
 		  yourself
 ]
 
@@ -157,7 +157,7 @@ MyPiece >> isPiece [
 { #category : 'testing' }
 MyPiece >> isWhite [
 	
-	^ color isBlack not
+	^ color isWhite
 ]
 
 { #category : 'rendering' }

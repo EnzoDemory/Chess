@@ -136,6 +136,12 @@ MyChessSquare >> highlightTarget [
 	self addChild: target
 ]
 
+{ #category : 'rendering' }
+MyChessSquare >> ifWhiteSquare: aLetter ifBlackSquare: aSecondLetter [
+
+	^ color isBlack ifTrue: [ aSecondLetter ] ifFalse: [ aLetter ]
+]
+
 { #category : 'initialization' }
 MyChessSquare >> initialize [
 

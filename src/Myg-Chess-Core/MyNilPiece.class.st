@@ -26,7 +26,7 @@ MyNilPiece >> isPiece [
 { #category : 'rendering' }
 MyNilPiece >> renderPieceOn: aSquare [
 
-	^ aSquare renderNil: self
+	^ color renderNilOn: aSquare
 ]
 
 { #category : 'rendering' }

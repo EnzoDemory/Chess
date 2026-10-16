@@ -25,3 +25,33 @@ MyWhiteColor >> pawnStartFile [
  
 	 ^ $2
 ]
+
+{ #category : 'rendering' }
+MyWhiteColor >> renderBishopOn: aSquare [
+	^ aSquare ifWhiteSquare: 'B' ifBlackSquare: 'b'
+]
+
+{ #category : 'rendering' }
+MyWhiteColor >> renderKingOn: aSquare [
+	^ aSquare ifWhiteSquare: 'K' ifBlackSquare: 'k'
+]
+
+{ #category : 'rendering' }
+MyWhiteColor >> renderKnightOn: aSquare [
+	^ aSquare ifWhiteSquare: 'N' ifBlackSquare: 'n'
+]
+
+{ #category : 'rendering' }
+MyWhiteColor >> renderPawnOn: aSquare [
+	^ aSquare ifWhiteSquare: 'P' ifBlackSquare: 'p'
+]
+
+{ #category : 'rendering' }
+MyWhiteColor >> renderQueenOn: aSquare [
+	^ aSquare ifWhiteSquare: 'Q' ifBlackSquare: 'q'
+]
+
+{ #category : 'rendering' }
+MyWhiteColor >> renderRookOn: aSquare [
+	^ aSquare ifWhiteSquare: 'R' ifBlackSquare: 'r'
+]

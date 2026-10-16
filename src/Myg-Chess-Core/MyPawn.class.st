@@ -76,7 +76,7 @@ MyPawn >> oneStepForward [
 { #category : 'rendering' }
 MyPawn >> renderPieceOn: aSquare [ 
 	
-	^ aSquare renderPawn: self
+	^ color renderPawnOn: aSquare
 ]
 
 { #category : 'rendering' }

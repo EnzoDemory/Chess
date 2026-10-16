@@ -11,6 +11,12 @@ MyNilPiece >> canMoveTo: aSquare [
 	^ false
 ]
 
+{ #category : 'rendering' }
+MyNilPiece >> initialize [
+	super initialize.
+	color := MyNilColor new
+]
+
 { #category : 'testing' }
 MyNilPiece >> isPiece [
 	

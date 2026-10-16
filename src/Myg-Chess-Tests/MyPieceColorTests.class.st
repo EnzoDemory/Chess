@@ -6,6 +6,12 @@ Class {
 }
 
 { #category : 'tests' }
+MyPieceColorTests >> testNilPieceHasANilColor [
+
+    self assert: MyNilPiece new color equals: MyNilColor new
+]
+
+{ #category : 'tests' }
 MyPieceColorTests >> testOpponentOfBlackIsWhite [
 
     self assert: MyPieceColor black opponentColor equals: MyPieceColor white
